@@ -1,0 +1,74 @@
+name: Build iOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      signing:
+        description: 'unsigned = IPA para firmar después; signed = requiere certificado y perfil Apple'
+        required: true
+        default: unsigned
+        type: choice
+        options: [unsigned, signed]
+      export_method:
+        description: 'Solo para signed: método compatible con tu perfil Apple'
+        required: true
+        default: development
+        type: choice
+        options: [development, ad-hoc, app-store]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ios:
+    runs-on: macos-15
+    timeout-minutes: 55
+    env:
+      API_BASE_URL: ${{ vars.API_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.2'
+          channel: stable
+          cache: true
+      - name: Resolver dependencias
+        run: flutter pub get --enforce-lockfile
+      - name: Validar código y flujos
+        run: |
+          flutter analyze
+          flutter test
+      - name: Configurar la dirección del servidor
+        run: python3 scripts/build_config.py
+      - name: Preparar firma Apple
+        if: inputs.signing == 'signed'
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          EXPORT_METHOD: ${{ inputs.export_method }}
+        run: python3 scripts/apple_signing.py
+      - name: Compilar iPhone sin firma
+        if: inputs.signing == 'unsigned'
+        run: |
+          flutter build ios --release --no-codesign --build-number="$GITHUB_RUN_NUMBER" --dart-define-from-file=config/build.json
+          python3 scripts/package_unsigned.py
+      - name: Compilar y exportar IPA firmada
+        if: inputs.signing == 'signed'
+        run: flutter build ipa --release --build-number="$GITHUB_RUN_NUMBER" --export-options-plist="$RUNNER_TEMP/ExportOptions.plist" --dart-define-from-file=config/build.json
+      - name: Descargar resultado de compilación
+        uses: actions/upload-artifact@v4
+        with:
+          name: Musa-iOS-${{ inputs.signing }}-${{ github.run_number }}
+          path: |
+            build/ios/ipa/*.ipa
+            build/ios/ipa/LEEME.txt
+          if-no-files-found: error
+          retention-days: 14
+      - name: Limpiar credenciales de firma
+        if: always() && inputs.signing == 'signed'
+        run: python3 scripts/apple_signing.py --cleanup
