@@ -1,0 +1,114 @@
+[
+  {
+    "id": "blazer",
+    "title": "Sastrería, sin esfuerzo",
+    "imageUrl": "https://images.unsplash.com/photo-1625519205691-1b6b7b24622e?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/blazer.jpg",
+    "source": "https://unsplash.com/photos/NVV_0qVJ5lw",
+    "author": "MohamadReza Khashay",
+    "tags": [
+      "minimalista",
+      "sastrería",
+      "neutros",
+      "elegante"
+    ]
+  },
+  {
+    "id": "pink",
+    "title": "Un poco de romance",
+    "imageUrl": "https://images.unsplash.com/photo-1494578379344-d6c710782a3d?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/pink.jpg",
+    "source": "https://unsplash.com/photos/mNZ-GvOQUUY",
+    "author": "Tamara Bellis",
+    "tags": [
+      "romántico",
+      "rosa",
+      "vestido",
+      "femenino"
+    ]
+  },
+  {
+    "id": "denim",
+    "title": "El encanto de lo simple",
+    "imageUrl": "https://images.unsplash.com/photo-1475178626620-a4d074967452?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/denim.jpg",
+    "source": "https://unsplash.com/photos/zDyJOj8ZXG0",
+    "author": "Tamara Bellis",
+    "tags": [
+      "casual",
+      "denim",
+      "blanco",
+      "básicos"
+    ]
+  },
+  {
+    "id": "yellow",
+    "title": "Tu dosis de color",
+    "imageUrl": "https://images.unsplash.com/photo-1505892458649-41be8480bb4a?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/yellow.jpg",
+    "source": "https://unsplash.com/photos/tYnqqEJrRrw",
+    "author": "Tamara Bellis",
+    "tags": [
+      "urbano",
+      "amarillo",
+      "contraste",
+      "casual"
+    ]
+  },
+  {
+    "id": "cozy",
+    "title": "Domingos sin prisa",
+    "imageUrl": "https://images.unsplash.com/photo-1544779309-add571050ef9?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/cozy.jpg",
+    "source": "https://unsplash.com/photos/RqhgvrI9T_0",
+    "author": "Tamara Bellis",
+    "tags": [
+      "casual",
+      "capas",
+      "neutros",
+      "cómodo"
+    ]
+  },
+  {
+    "id": "floral",
+    "title": "Flores en la ciudad",
+    "imageUrl": "https://images.unsplash.com/photo-1760034346200-6afeba4fff29?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/floral.jpg",
+    "source": "https://unsplash.com/photos/NkQeQO3-qBk",
+    "author": "Karsten Winegeart",
+    "tags": [
+      "romántico",
+      "flores",
+      "vestido",
+      "verano"
+    ]
+  },
+  {
+    "id": "blue",
+    "title": "Algo azul, algo tuyo",
+    "imageUrl": "https://images.unsplash.com/photo-1763604996066-73160867c1fc?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/blue.jpg",
+    "source": "https://unsplash.com/photos/Xkc3Ed-o-uk",
+    "author": "alex Roosso",
+    "tags": [
+      "azul",
+      "vestido",
+      "femenino",
+      "elegante"
+    ]
+  },
+  {
+    "id": "belted",
+    "title": "Detalles que cambian todo",
+    "imageUrl": "https://images.unsplash.com/flagged/photo-1553802922-5f7e9934e328?auto=format&fit=crop&w=1000&q=85",
+    "asset": "assets/images/belted.jpg",
+    "source": "https://unsplash.com/photos/OJHNzGwqTSA",
+    "author": "Kristina Petrick",
+    "tags": [
+      "sastrería",
+      "neutros",
+      "cinturón",
+      "elegante"
+    ]
+  }
+]

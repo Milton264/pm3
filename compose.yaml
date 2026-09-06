@@ -1,0 +1,15 @@
+services:
+  musa:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    env_file: server/.env
+    environment:
+      DATA_DIR: /data
+    ports:
+      - '127.0.0.1:8787:8787'
+    volumes:
+      - musa-data:/data
+volumes:
+  musa-data:
